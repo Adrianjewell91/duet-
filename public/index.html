@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duet</title>
+    <title>Document</title>
 </head>
 <body>
-    <button id="play">Play the piano</button>
-    <button id="listen">Listen</button>
-    <canvas id ="canvas"></canvas>
+    WELCOME TO DUET!
+    <button id="jam">Start a jam!</button>
 </body>
-<script src="./pianokeyboard.js"></script>
-<script src="./scripts.js"></script>
+<script>
+    document.querySelector('#jam').addEventListener('click', () => {
+        window.open(window.location.href + "jam", '_blank');
+    });
+</script>
 </html>

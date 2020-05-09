@@ -1,13 +1,23 @@
 'use strict'
 const express = require('express');
+var path = require('path');
 const PORT = process.env.PORT || 3000;
 
 const WebSocket = require('ws');
 
-const server = express().use(express.static('public'))
-    .listen(PORT, () => {
-        console.log(`Duet app listening on port ${PORT}!`)
-    });
+const server = express();
+server.use(express.static('public'));
+
+server.get('/', function (_, res) {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
+});
+
+server.get('/jam', function (_, res) {
+    res.sendFile(path.join(__dirname + '/public/jam.html'));
+});
+
+server.listen(PORT, () => console.log(`Duet app listening at http://localhost:${PORT}`))
+
 
 const wss = new WebSocket.Server({ server });
 

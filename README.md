@@ -4,13 +4,22 @@ Lets try to get hitomi and me to play in the same chat.
 
 Get sessions working.
     Homepage 
-    Push a button and new window new session 
+    Click a button and new window new session 
         - use the concept of a room
+
+
+    /session/:id
+
+
 Figure out the volume issue
 Have a nice css layout.
+Figure out socket.io?
+
 Get two way playing on the same keyboard working.
 Handle multiple initialization attempts. 
+Show error if no keyboard connect and try to play.
 
+____
 
 Make it sound like a piano at least somewhat 
 		- stop the speakers from blowing out.

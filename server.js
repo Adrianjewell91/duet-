@@ -6,13 +6,16 @@ const WebSocket = require('ws');
 
 const server = express().use(express.static('public'))
     .listen(PORT, () => {
-        console.log(`Example app listening on port ${PORT}!`)
+        console.log(`Duet app listening on port ${PORT}!`)
     });
 
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
-    console.log(ws);
+    console.log(
+        'Client Connected'
+    );
+
     ws.on('message', function incoming(message) {
         console.log('received message: %s', message);
         wss.clients.forEach(function each(client) {
@@ -22,4 +25,6 @@ wss.on('connection', function connection(ws) {
         });
 
     });
+
+    ws.on('close', () => console.log('Client disconnected'));
 });

@@ -1,3 +1,7 @@
+var canvas = document.getElementById("canvas");
+var KEYS_PLAYED = new Set([]);
+DrawKeyboard(canvas, KEYS_PLAYED);	
+
 document.querySelector('#play').addEventListener('click', () => {
     [audioCtx, keys, websocket] = setUp();
     let device;
@@ -63,16 +67,19 @@ function _onmidimessage(e, keys, audioCtx, websocket) {
     */
     switch (e.data[0]) {
         case 144:
+            KEYS_PLAYED.add(e.data[1] - 21)
             websocket.send(JSON.stringify(e.data));
             keys[e.data[1] - 21].gain.setValueAtTime(e.data[2] / 100, audioCtx.currentTime);
             console.log(e);
             break;
         case 128:
+            KEYS_PLAYED.delete(e.data[1] - 21)
             console.log(e);
             websocket.send(JSON.stringify(e.data));
             keys[e.data[1] - 21].gain.setValueAtTime(0, audioCtx.currentTime);
             break;
     }
 
+    DrawKeyboard(canvas, KEYS_PLAYED)
     return 0;
 }

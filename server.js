@@ -1,21 +1,18 @@
-'use strict';
-
+'use strict'
 const express = require('express');
-const { Server } = require('ws');
+const port = 3000;
 
-const PORT = process.env.PORT || 3000;
-// const INDEX = '/index.html';
-
+const WebSocket = require('ws');
 
 const server = express().use(express.static('public'))
-    .listen(PORT, () => {
-        console.log(`Example app listening on port ${PORT}!`)
+    .listen(port, () => {
+        console.log(`Example app listening on port ${port}!`)
     });
-const wss = new Server({ server });
+
+const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function connection(ws) {
-    console.log('Client connected');
-    // console.log(ws);
+    console.log(ws);
     ws.on('message', function incoming(message) {
         console.log('received message: %s', message);
         wss.clients.forEach(function each(client) {
@@ -23,12 +20,6 @@ wss.on('connection', function connection(ws) {
                 client.send(message);
             }
         });
-    });
-    ws.on('close', () => console.log('Client disconnected'));
-});
 
-setInterval(() => {
-    wss.clients.forEach((client) => {
-        client.send(new Date().toTimeString());
     });
-}, 1000);
+});

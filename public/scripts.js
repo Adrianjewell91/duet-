@@ -9,6 +9,7 @@ document.querySelector('#play').addEventListener('click', () => {
         device = access.inputs.values().next().value;
         device.onmidimessage = (e) => _onmidimessage(e, keys, audioCtx, websocket);
     });
+    disableUI();
     console.log('playing')
 });
 
@@ -22,6 +23,7 @@ document.querySelector('#listen').addEventListener('click', () => {
         }
         _onmidimessage(payload, keys, audioCtx, websocket);
     };
+    disableUI();
     console.log('listening')
 });
 
@@ -34,6 +36,11 @@ function setUp() {
     console.log(websocket);
 
     return [audioCtx, keys, websocket];
+}
+
+function disableUI() {
+    document.querySelector('#listen').setAttribute('disabled', true);
+    document.querySelector('#play').setAttribute('disabled', true);
 }
 
 function createKeyBoard(audioCtx) {

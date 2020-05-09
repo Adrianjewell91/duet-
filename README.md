@@ -6,11 +6,11 @@ Get sessions working.
     Homepage 
     Push a button and new window new session 
         - use the concept of a room
-Build a visual keyboard to show what's being played. 
 Figure out the volume issue
 Have a nice css layout.
 Get two way playing on the same keyboard working.
- 
+Handle multiple initialization attempts. 
+
 
 Make it sound like a piano at least somewhat 
 		- stop the speakers from blowing out.

@@ -1,12 +1,12 @@
 'use strict'
 const express = require('express');
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 const WebSocket = require('ws');
 
 const server = express().use(express.static('public'))
-    .listen(port, () => {
-        console.log(`Example app listening on port ${port}!`)
+    .listen(PORT, () => {
+        console.log(`Example app listening on port ${PORT}!`)
     });
 
 const wss = new WebSocket.Server({ server });

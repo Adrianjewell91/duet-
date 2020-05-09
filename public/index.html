@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Duet</title>
 </head>
+
 <body>
-    WELCOME TO DUET!
-    <button id="jam">Start a jam!</button>
+        <header>
+        WELCOME TO DUET!
+        <button id="jam">Start a jam!</button>
+        </header>
+        <canvas id="canvas"></canvas>
 </body>
+<script src="./pianokeyboard.js"></script>
+<script src="./scripts.js"></script>
 <script>
     document.querySelector('#jam').addEventListener('click', () => {
-        window.open(window.location.href + "jam", '_blank');
+        document.querySelector('header').innerHTML = `
+            <button id="play">Play the piano</button>
+            <button id="listen">Listen</button>
+        `
+        run();
     });
 </script>
 </html>

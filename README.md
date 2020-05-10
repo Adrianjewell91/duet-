@@ -2,16 +2,15 @@ TODO: Get this to a point where people can at least use it somewhat.
 
 Lets try to get hitomi and me to play in the same chat. 
 
+Figure out the volume issue
+
 Get sessions working.
-    Homepage 
+    reproduce the session error tmr and post on stack overflow. 
     Click a button and new window new session 
         - use the concept of a room
 
-
     /session/:id
 
-
-Figure out the volume issue
 Have a nice css layout.
 Figure out socket.io?
 

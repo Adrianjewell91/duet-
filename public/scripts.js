@@ -55,13 +55,24 @@ function run() {
         }
 
         var keys = new Array(88).fill((idx) => {
+            //So much configuration.
             var oscillator = audioCtx.createOscillator()
             var gainNode = audioCtx.createGain();
+            var filter = audioCtx.createBiquadFilter();
+
+            oscillator.type = 'sawtooth';
             oscillator.frequency.value = _mtof(idx);
+
+            filter.type = 'lowpass';
+
             oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
+            gainNode.connect(filter);
+            filter.connect(audioCtx.destination);
+
             gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            
             oscillator.start();
+
             return gainNode;
         });
 

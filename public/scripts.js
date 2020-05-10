@@ -59,7 +59,7 @@ function run() {
         }
 
         var keys = new Array(88).fill((idx) => {
-            //So much configuration.
+            //So much configuring
             var oscillator = audioCtx.createOscillator()
             var gainNode = audioCtx.createGain();
             var filter = audioCtx.createBiquadFilter();
@@ -79,9 +79,6 @@ function run() {
 
             return gainNode;
         });
-
-        // may want to pass all 88 keys through a gain node that levels the volume.
-        // then connect that gain node to the destination (which is the speakers)
 
         return keys.map((f, idx) => f(idx + 21));
     }

@@ -1,24 +1,63 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
     <title>Duet</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <meta name="theme-color" content="#563d7c">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
 </head>
 
-<body>
-        <header>
-        WELCOME TO DUET!
-        <button id="jam">Start a jam!</button>
-        </header>
-        <canvas id="canvas"></canvas>
+<body class="text-center">
+    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <main role="main" class="inner cover jam-session">
+            <h1 class="cover-heading">Welcome to Duet!</h1>
+            <p class="lead">Jam with your friends! Simply connect your midi keyboard to your computer, turn it ON, and start the jam!</p>
+            <p class="lead">
+                <a id="jam" href="#" class="btn btn-lg btn-secondary">Start the Jam!</a>
+            </p>
+        </main>
+<canvas id="canvas"></canvas>
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p>Made by <a href="https://adrianjewell.com/">Adrian Jewell</a>.
+            </div>
+        </footer>
+    </div>
+
+
 </body>
+            
 <script src="./pianokeyboard.js"></script>
 <script src="./scripts.js"></script>
 <script>
     document.querySelector('#jam').addEventListener('click', () => {
-        document.querySelector('header').innerHTML = `
+        document.querySelector('.jam-session').innerHTML = `
             <button id="play">Play the piano</button>
             <button id="listen">Listen</button>
         `
@@ -26,3 +65,4 @@
     });
 </script>
 </html>
+

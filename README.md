@@ -2,8 +2,6 @@ TODO: Get this to a point where people can at least use it somewhat.
 
 Lets try to get hitomi and me to play in the same chat. 
 
-Figure out the volume issue
-
 Get sessions working.
     reproduce the session error tmr and post on stack overflow. 
     Click a button and new window new session 
@@ -12,31 +10,16 @@ Get sessions working.
     /session/:id
 
 Have a nice css layout.
-Figure out socket.io?
 
-Get two way playing on the same keyboard working.
+Get two-way playing on the same keyboard working.
+    If two people press 'play' it should just work .
+    
 Handle multiple initialization attempts. 
 Show error if no keyboard connect and try to play.
 
+Batch notes played, like chords, so that many pitches can be grouped into one packet, but only 
+on playing down. 
+Really pin down the sound, and do a good job with it (remove the cycles)
+
 ____
-
-Make it sound like a piano at least somewhat 
-		- stop the speakers from blowing out.
-		- get a nicer sound
-		- pedal.
-
-Add a visual keyboard and have something nice looking. 
-
-Make the keyboard have no lag at all:
-	- some kind of time loop on the client.
-	- am i doing UDP in my websocket? (but what if the key up event doesn't work?)
-
-Users can spin up a new session
-		0. Home page with a button that says “start a new session”:
-		1. Manage an array of server objects that server the same static file and listen on different ports (can set a max number of servers(lessons)),
-			but if this main server crashes then they all crash? Is that true? If not, how do I terminate them?
-		2. Then make them separate processes?
-		3. Then make it containerized, more scalable later on?
-
-
 

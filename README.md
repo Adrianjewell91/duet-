@@ -1,6 +1,9 @@
-TODO: Get this to a point where people can at least use it somewhat. 
+TODO: Lets try to get hitomi and me to play in the same chat. 
 
-Lets try to get hitomi and me to play in the same chat. 
+Test two way playing, hopefully with Hitomi or Matt Slaughter.
+
+Refactor:
+Create my own adsr envelope.
 
 Get sessions working.
     reproduce the session error tmr and post on stack overflow. 
@@ -9,17 +12,18 @@ Get sessions working.
 
     /session/:id
 
-Have a nice css layout.
+Have a nice css layout. - add a nice picture and a background video later. 
 
-Get two-way playing on the same keyboard working.
-    If two people press 'play' it should just work .
-    
+Send binary data instead of a serialized json object (faster?)
 Handle multiple initialization attempts. 
-Show error if no keyboard connect and try to play.
+
+Add some calibration for new midi instruments.
 
 Batch notes played, like chords, so that many pitches can be grouped into one packet, but only 
 on playing down. 
 Really pin down the sound, and do a good job with it (remove the cycles)
+    - Overtones series 
+    - 
 
 ____
 

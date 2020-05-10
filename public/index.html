@@ -37,12 +37,13 @@
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
         <main role="main" class="inner cover jam-session">
             <h1 class="cover-heading">Welcome to Duet!</h1>
-            <p class="lead">Jam with your friends! Simply connect your midi keyboard to your computer, turn it ON, and start the jam!</p>
+            <p class="lead">Jam with your friends! Simply connect your midi keyboard to your computer, turn it ON, and
+                start the jam!</p>
             <p class="lead">
                 <a id="jam" href="#" class="btn btn-lg btn-secondary">Start the Jam!</a>
             </p>
         </main>
-<canvas id="canvas"></canvas>
+        <canvas id="canvas"></canvas>
         <footer class="mastfoot mt-auto">
             <div class="inner">
                 <p>Made by <a href="https://adrianjewell.com/">Adrian Jewell</a>.
@@ -52,17 +53,12 @@
 
 
 </body>
-            
 <script src="./pianokeyboard.js"></script>
 <script src="./scripts.js"></script>
 <script>
     document.querySelector('#jam').addEventListener('click', () => {
-        document.querySelector('.jam-session').innerHTML = `
-            <button id="play">Play the piano</button>
-            <button id="listen">Listen</button>
-        `
         run();
     });
 </script>
-</html>
 
+</html>

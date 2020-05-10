@@ -8,6 +8,15 @@ const server = express().use(express.static('public'))
     .listen(PORT, () => {
         console.log(`Example app listening on PORT ${PORT}!`)
     });
+// const server = express().use(express.static('public'));
+
+// server.get('/', function (req, res) {
+//     res.sendFile(path.join(__dirname + '/public/index.html'));
+// });
+
+// server.listen(PORT, () => {
+//     console.log(`Example app listening on PORT ${PORT}!`)
+// });
 
 const wss = new WebSocket.Server({ server });
 

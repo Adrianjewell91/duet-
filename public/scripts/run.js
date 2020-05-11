@@ -2,9 +2,12 @@ function run(DrawKeyboard = () => {}) {
     paintInitialPiano(DrawKeyboard);
 
     var KEYS_PLAYED = new Set([]);
+
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var keys = createKeyBoard(audioCtx);
+    
     var websocket = new WebSocket(location.origin.replace(/^http/, 'ws'));
+    websocket.binaryType = 'arraybuffer';
 
     window.navigator.requestMIDIAccess().then(access => {
         let activity;
@@ -15,8 +18,8 @@ function run(DrawKeyboard = () => {}) {
             `;
 
             access.inputs.values().next().value.onmidimessage = (e) => {
-                websocket.send(JSON.stringify(e.data));
-                _onmidimessage(e, keys, audioCtx, KEYS_PLAYED, (a, b) => DrawKeyboard(a, b));
+                websocket.send(e.data);
+                _onmidimessage(e.data, keys, audioCtx, KEYS_PLAYED, (a, b) => DrawKeyboard(a, b));
             }
 
         } else {
@@ -31,9 +34,8 @@ function run(DrawKeyboard = () => {}) {
 
     websocket.onmessage = function (event) {
         console.log(event);
-        payload = {
-            data: JSON.parse(event.data)
-        }
+        payload = new Uint8Array(event.data);
+
         _onmidimessage(payload, keys, audioCtx, KEYS_PLAYED, (a,b) => DrawKeyboard(a,b));
     };
 }

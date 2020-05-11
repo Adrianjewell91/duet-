@@ -2,8 +2,6 @@ TODO: Lets try to get hitomi and me to play in the same chat.
 
 Test two way playing, hopefully with Hitomi or Matt Slaughter.
 
-Refactor to make this thing a lot more readable and modular.
-
 Get sessions working.
     Start a session
     Join a current session:
@@ -30,6 +28,7 @@ Really pin down the sound, and do a good job with it (remove the cycles)
     - Overtones series 
     - Different pitches have different filters.
     - Add pedal somehow. 
+    _ set sustain time to be a function of pitch. 
 
 ____
 

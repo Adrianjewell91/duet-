@@ -9,7 +9,7 @@
     <title>Duet</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
 
     <meta name="theme-color" content="#563d7c">
 
@@ -30,7 +30,7 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <link href="styles/cover.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
@@ -53,11 +53,12 @@
 
 
 </body>
-<script src="./pianokeyboard.js"></script>
-<script src="./scripts.js"></script>
+<script src="./scripts/DrawKeyboard.js"></script>
+<script src="./scripts/util.js"></script>
+<script src="./scripts/run.js"></script>
 <script>
     document.querySelector('#jam').addEventListener('click', () => {
-        run();
+        run(DrawKeyboard);
     });
 </script>
 

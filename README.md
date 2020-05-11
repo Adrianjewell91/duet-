@@ -2,9 +2,6 @@ TODO: Lets try to get hitomi and me to play in the same chat.
 
 Test two way playing, hopefully with Hitomi or Matt Slaughter.
 
-Refactor:
-Do this tonight, what else am I going to do?
-Use samples instead.
 Refactor to make this thing a lot more readable and modular.
 
 Get sessions working.

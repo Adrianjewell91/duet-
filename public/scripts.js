@@ -91,14 +91,17 @@ function run() {
         switch (e.data[0]) {
             case 144:
                 KEYS_PLAYED.add(e.data[1] - 21)
-                keys[e.data[1] - 21].gain.setValueAtTime(e.data[2] / 100, audioCtx.currentTime);
+                const vol = (e.data[2] / 100) * (e.data[2] / 100);
+                keys[e.data[1] - 21].gain.linearRampToValueAtTime(vol, audioCtx.currentTime + 0.01);
+                keys[e.data[1] - 21].gain.linearRampToValueAtTime(vol * 0.5, audioCtx.currentTime + 0.5);
+                keys[e.data[1] - 21].gain.linearRampToValueAtTime(0, audioCtx.currentTime + 5);
                 console.log(e);
                 break;
             case 128:
                 KEYS_PLAYED.delete(e.data[1] - 21)
                 console.log(e);
                 keys[e.data[1] - 21].gain.cancelScheduledValues(audioCtx.currentTime);
-                keys[e.data[1] - 21].gain.setValueAtTime(0, audioCtx.currentTime);
+                keys[e.data[1] - 21].gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05);
                 break;
         }
 

@@ -49,7 +49,7 @@ keys.forEach((socket, idx) => {
         // ...
         console.log("connected", idx);
         ws.on('message', function incoming(message) {
-            console.log('received message: %s', message);
+            console.log(`received message: ${message} on PORT: ${PORT}`);
             socket.clients.forEach(function each(client) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
                     client.send(message);

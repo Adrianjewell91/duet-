@@ -2,12 +2,15 @@ TODO: Lets try to get hitomi and me to play in the same chat.
 
 Test two way playing, hopefully with Hitomi or Matt Slaughter.
 
+
+Implement Cory's keyboard. 
+    - check for vol === 0 first, then the number. 
+
 Set up a multi instrument calibration - have the user set up a function that determines noteOn notes off logic. 
 
 Make some kind of loading for when all the sockets are connected. 
 
 Find out the PORT on Heroku and other ports too. 
-
 Get sessions working.
     Start a session
     Join a current session:

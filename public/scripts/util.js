@@ -29,10 +29,12 @@ function createKeyBoard(audioCtx) {
 }
 
 function _onmidimessage(data, keys, audioCtx, KEYS_PLAYED = new Set([]), redraw = () => {}) {
+    if (data.length < 3) return;
+
     function noteOn(gainNode, vol) {
         gainNode.gain.linearRampToValueAtTime(vol, audioCtx.currentTime + 0.01);
         gainNode.gain.linearRampToValueAtTime(vol * 0.5, audioCtx.currentTime + 0.5);
-        gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 5);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 5);
     }
 
     function noteOff(gainNode) {
@@ -48,15 +50,12 @@ function _onmidimessage(data, keys, audioCtx, KEYS_PLAYED = new Set([]), redraw 
     */
     // console.log(data);
     const key = data[1] - 21;
-    switch (data[0]) {
-        case 144:
-            KEYS_PLAYED.add(key)
-            noteOn(keys[key], (data[2] / 100) * (data[2] / 100));
-            break;
-        case 128:
-            KEYS_PLAYED.delete(key)
-            noteOff(keys[key]);
-            break;
+    if (data[2] === 0 || data[0] === 128){
+        KEYS_PLAYED.delete(key)
+        noteOff(keys[key]);
+    } else if (data[0] === 144) {
+        KEYS_PLAYED.add(key)
+        noteOn(keys[key], (data[2] / 100) * (data[2] / 100));
     }
 
     return redraw(canvas, KEYS_PLAYED);

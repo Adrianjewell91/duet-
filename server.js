@@ -538,10 +538,6 @@ server.on('upgrade', function upgrade(request, socket, head) {
             socket.destroy();
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a1584e6832f59735b497000ca303a1cdb1c1069b
     // if (pathname === '/foo') {
     //     wss1.handleUpgrade(request, socket, head, function done(ws) {
     //         wss1.emit('connection', ws, request);

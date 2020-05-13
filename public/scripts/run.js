@@ -6,8 +6,23 @@ function run(DrawKeyboard = () => {}) {
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var keys = createKeyBoard(audioCtx);
     
-    var websocket = new WebSocket(location.origin.replace(/^http/, 'ws'));
-    websocket.binaryType = 'arraybuffer';
+    // now create 88 websockets and see what happens:
+    var sockets = new Array(88).fill((idx) => {
+        const websocket = new WebSocket(location.origin.replace(/^http/, 'ws') + "/" + idx);
+        websocket.binaryType = 'arraybuffer';
+
+        websocket.onmessage = function (event) {
+            console.log(event);
+            payload = new Uint8Array(event.data);
+
+            _onmidimessage(payload, keys, audioCtx, KEYS_PLAYED, (a, b) => DrawKeyboard(a, b));
+        };
+
+        return websocket;
+    });
+
+    sockets = sockets.map((connect, idx) => connect(idx));
+    // var websocket = new WebSocket(location.origin.replace(/^http/, 'ws') + "/0");
 
     window.navigator.requestMIDIAccess().then(access => {
         let activity;
@@ -18,7 +33,8 @@ function run(DrawKeyboard = () => {}) {
             `;
 
             access.inputs.values().next().value.onmidimessage = (e) => {
-                websocket.send(e.data);
+                console.log(e);
+                sockets[e.data[1] - 21].send(e.data);
                 _onmidimessage(e.data, keys, audioCtx, KEYS_PLAYED, (a, b) => DrawKeyboard(a, b));
             }
 
@@ -31,11 +47,4 @@ function run(DrawKeyboard = () => {}) {
 
         console.log(activity);
     });
-
-    websocket.onmessage = function (event) {
-        console.log(event);
-        payload = new Uint8Array(event.data);
-
-        _onmidimessage(payload, keys, audioCtx, KEYS_PLAYED, (a,b) => DrawKeyboard(a,b));
-    };
 }

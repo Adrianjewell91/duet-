@@ -16,8 +16,6 @@ Do something like:
         Play one note 
             Capture the events
 
-
-Send binary data instead of a serialized json object (faster?)
 Handle multiple initialization attempts. 
 
 Add some calibration for new midi instruments.

@@ -6,7 +6,7 @@ function run(DrawKeyboard = () => {}) {
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var keys = createKeyBoard(audioCtx);
     
-    var websocket = new WebSocket(location.origin.replace(/^http/, 'ws'));
+    var websocket = new WebSocket(location.origin.replace(/^http/, 'ws') + "/bar");
     websocket.binaryType = 'arraybuffer';
 
     window.navigator.requestMIDIAccess().then(access => {

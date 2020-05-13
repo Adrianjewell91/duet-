@@ -42,6 +42,10 @@ var keys = new Array(88).fill(() => new WebSocket.Server({ noServer: true }));
 keys = keys.map((newSocket) => newSocket());
 keys.forEach((socket, idx) => {
     socket.on('connection', function connection(ws) {
+        //set up the ping
+        var id = setInterval(function () {
+            ws.send(new Uint8Array(1), function () { })
+        }, 1000);
         // ...
         console.log("connected", idx);
         ws.on('message', function incoming(message) {
@@ -533,7 +537,6 @@ server.on('upgrade', function upgrade(request, socket, head) {
         default:
             socket.destroy();
     }
-
 
     // if (pathname === '/foo') {
     //     wss1.handleUpgrade(request, socket, head, function done(ws) {

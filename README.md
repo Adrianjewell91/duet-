@@ -2,6 +2,11 @@ TODO: Lets try to get hitomi and me to play in the same chat.
 
 Test two way playing, hopefully with Hitomi or Matt Slaughter.
 
+Broken websocket: setInterval pinging from backend to each one.
+Set up a multi instrument calibration - have the user set up a function that determines noteOn notes off logic. 
+
+Make some kind of loading for when all the sockets are connected. 
+
 Get sessions working.
     Start a session
     Join a current session:

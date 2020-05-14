@@ -1,4 +1,4 @@
-function _onmidimessage(data, keys, audioCtx, KEYS_PLAYED = new Set([]), redraw = () => { }, canvas) {
+function _onmidimessage(data = [], keys = [], audioCtx, KEYS_PLAYED = new Set([]), redraw = () => { }, canvas) {
     if (data.length < 3) return;
 
     function noteOn(gainNode, vol) {

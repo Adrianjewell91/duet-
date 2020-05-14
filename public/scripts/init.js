@@ -7,6 +7,6 @@ function init(connectionString = '', DrawKeyboard = () => {}) {
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var keys = createKeyBoard(audioCtx);
     
-    initSession(connectionString, keys, audioCtx, KEYS_PLAYED, DrawKeyboard, canvas);
+    prepareSession(connectionString, keys, audioCtx, KEYS_PLAYED, DrawKeyboard, canvas);
 }
 

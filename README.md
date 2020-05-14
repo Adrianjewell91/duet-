@@ -1,33 +1,20 @@
-TODO: Lets try to get hitomi and me to play in the same chat. 
-
-Test two way playing, hopefully with Hitomi or Matt Slaughter.
-
-
-Implement Cory's keyboard. 
-    - check for vol === 0 first, then the number. 
+TODO:
 
 Set up a multi instrument calibration - have the user set up a function that determines noteOn notes off logic. 
 
-Make some kind of loading for when all the sockets are connected. 
+Refactor to use classes and make this thing more readable. 
 
-Find out the PORT on Heroku and other ports too. 
-Get sessions working.
-    Start a session
-    Join a current session:
+Create sessions:
+Ideally, each session is it's own connection string. 
 
-    /session/:id
 
-Have a nicer css layout. - add a nice picture and a background video later. 
 
-Figure out how to write a calibration function for multiple instruments;
-Do something like:
-    Calibrate your instrument:
-        Play one note 
-            Capture the events
+Have both the jam session for a single person
 
-Handle multiple initialization attempts. 
+and have the overlord feature to see all sessions
 
-Add some calibration for new midi instruments.
+Make some kind of loading signal for when all the sockets are hooked up. 
+Add reconnection options?
 
 Really pin down the sound, and do a good job with it (remove the cycles)
     - Overtones series 
@@ -35,5 +22,4 @@ Really pin down the sound, and do a good job with it (remove the cycles)
     - Add pedal somehow. 
     _ set sustain time to be a function of pitch. 
 
-____
-
+Pitch the software to the music schools in my neighborhood. 

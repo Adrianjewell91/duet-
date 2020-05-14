@@ -54,11 +54,14 @@
 
 </body>
 <script src="./scripts/DrawKeyboard.js"></script>
-<script src="./scripts/util.js"></script>
-<script src="./scripts/run.js"></script>
+<script src="./scripts/paintInitialPiano.js"></script>
+<script src="./scripts/createkeyboard.js"></script>
+<script src="./scripts/_onmidimessage.js"></script>
+<script src="./scripts/prepareSession.js"></script>
+<script src="./scripts/init.js"></script>
 <script>
     document.querySelector('#jam').addEventListener('click', () => {
-        run(DrawKeyboard);
+        init(location.origin.replace(/^http/, 'ws'), DrawKeyboard);
     });
 </script>
 

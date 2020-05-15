@@ -2,6 +2,17 @@ TODO:
 
 Set up a multi instrument calibration - have the user set up a function that determines noteOn notes off logic. 
 
+Compress to use mp3 instead.
+Find some way to release the notes gracefully.
+    noteOn -
+    cancel scheduled values. 
+     reset current time. 
+    play if paused. 
+
+    noteOff - just set a linear Ramp to zero but don't pause
+
+Have notes from other pianos play in blue. 
+
 Refactor to use classes and make this thing more readable. 
 
 Create sessions:
@@ -16,10 +27,5 @@ Scale to many sessions, somehow.
 Make some kind of loading signal for when all the sockets are hooked up. 
 Add reconnection options?
 
-Really pin down the sound, and do a good job with it (remove the cycles)
-    - Overtones series 
-    - Different pitches have different filters.
-    - Add pedal somehow. 
-    _ set sustain time to be a function of pitch. 
 
 Pitch the software to the music schools in my neighborhood. 

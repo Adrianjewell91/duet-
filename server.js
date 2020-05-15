@@ -20,7 +20,7 @@ keys.forEach((socket, idx) => {
     socket.on('connection', function connection(ws) {
         //set up the ping
         var id = setInterval(function () {
-            ws.send(new Uint8Array(1), function () { })
+            ws.send(null, function () { })
         }, 1000);
         // ...
         console.log("connected", idx);

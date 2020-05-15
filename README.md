@@ -2,7 +2,6 @@ TODO:
 
 Set up a multi instrument calibration - have the user set up a function that determines noteOn notes off logic. 
 
-Compress to use mp3 instead.
 Find some way to release the notes gracefully.
     noteOn -
     cancel scheduled values. 

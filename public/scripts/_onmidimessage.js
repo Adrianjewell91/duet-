@@ -1,6 +1,4 @@
-function _onmidimessage(data = [], keys = [], audioCtx, KEYS_PLAYED = new Set([]), redraw = () => { }, canvas) {
-    if (data.length < 3) return;
-
+function _onmidimessage(data = [], keys = [], audioCtx, KEYS_PLAYED = new Set([]), redraw = () => { }, canvas, isRemotePlayer) {
     function noteOn({ audioElement, gainNode }, vol) {
         gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
         gainNode.gain.setValueAtTime(vol, 0);
@@ -33,5 +31,5 @@ function _onmidimessage(data = [], keys = [], audioCtx, KEYS_PLAYED = new Set([]
         noteOn(keys[key], (data[2] / 100) * (data[2] / 100));
     }
 
-    return redraw(canvas, KEYS_PLAYED);
+    return redraw(canvas, KEYS_PLAYED, isRemotePlayer ? "rgb(94,94,255)" : "rgb(255,0,0)");
 }

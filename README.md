@@ -5,13 +5,13 @@ Set up a multi instrument calibration - have the user set up a function that det
 Refactor to use classes and make this thing more readable. 
 
 Create sessions:
-Ideally, each session is it's own connection string. 
+Host another web socket-only server on heroku and try to connect to it. 
+If it works, separate the web app from the socket server.
+host another socket only server, 
+Create options on the home page to join session one or session 2.
+Add the overlord feature.
 
-
-
-Have both the jam session for a single person
-
-and have the overlord feature to see all sessions
+Scale to many sessions, somehow.
 
 Make some kind of loading signal for when all the sockets are hooked up. 
 Add reconnection options?

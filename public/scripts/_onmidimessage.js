@@ -1,15 +1,20 @@
 function _onmidimessage(data = [], keys = [], audioCtx, KEYS_PLAYED = new Set([]), redraw = () => { }, canvas) {
     if (data.length < 3) return;
 
-    function noteOn(gainNode, vol) {
-        gainNode.gain.linearRampToValueAtTime(vol, audioCtx.currentTime + 0.01);
-        gainNode.gain.linearRampToValueAtTime(vol * 0.5, audioCtx.currentTime + 0.5);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 5);
+    function noteOn({ audioElement, gainNode }, vol) {
+        gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(vol, 0);
+        audioElement.play();
+        // gainNode.gain.linearRampToValueAtTime(vol, audioCtx.currentTime + 0.01);
+        // gainNode.gain.linearRampToValueAtTime(vol * 0.5, audioCtx.currentTime + 0.5);
+        // gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 5);
     }
 
-    function noteOff(gainNode) {
-        gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
-        gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05);
+    function noteOff({ audioElement, gainNode }) {
+        // gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+        // gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.250);
+        audioElement.pause();
+        audioElement.currentTime = 0;
     }
 
     /**

@@ -11,9 +11,11 @@ const app = express().use(express.static('public'))
 
 const server = http.createServer(app);
 
-//now let's create 88 web sockets; 
+//88 web sockets; 
 var keys = new Array(88).fill(() => new WebSocket.Server({ noServer: true }));
+
 keys = keys.map((newSocket) => newSocket());
+
 keys.forEach((socket, idx) => {
     socket.on('connection', function connection(ws) {
         //set up the ping
@@ -39,6 +41,7 @@ keys.forEach((socket, idx) => {
     });
 });
 
+// The initializers 
 var upgradeHandler = {};
 for (let i = 0; i<88; i++) {
     upgradeHandler[`/${i}`] = (request, socket, head) => {

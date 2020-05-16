@@ -10,8 +10,6 @@ Find some way to release the notes gracefully.
 
     noteOff - just set a linear Ramp to zero but don't pause
 
-Have notes from other pianos play in blue. 
-
 Refactor to use classes and make this thing more readable. 
 
 Create sessions:

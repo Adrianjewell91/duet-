@@ -140,14 +140,19 @@
     <audio id="sample-88" src="./sounds/88.mp3" type="audio/mp3"></audio>
 </body>
 <script src="./scripts/DrawKeyboard.js"></script>
-<script src="./scripts/paintInitialPiano.js"></script>
-<script src="./scripts/createkeyboard.js"></script>
-<script src="./scripts/_onmidimessage.js"></script>
-<script src="./scripts/prepareSession.js"></script>
-<script src="./scripts/init.js"></script>
+<script src="./scripts/Keyboard.js"></script>
+<script src="./scripts/Session.js"></script>
+<script src="./scripts/Player.js"></script>
+<script src="./scripts/Jam.js"></script>
 <script>
     document.querySelector('#jam').addEventListener('click', () => {
-        init(location.origin.replace(/^http/, 'ws'), DrawKeyboard);
+        canvas = document.getElementById('canvas');
+        canvas.width = document.body.clientWidth;
+        canvas.height = document.body.clientHeight / 2;
+        canvasW = canvas.width;
+        canvasH = canvas.height;
+        const jam = new Jam(canvas, location.origin.replace(/^http/, 'ws'));
+        jam.init();
     });
 </script>
 

@@ -15,7 +15,7 @@
 
 // canvas 		- HTML5 canvas element
 // RedKeyArray  - array[NOW A SET type] of keys to color red (0 = low a, 87 = high c, proceeding chromatically)
-function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor) {
+function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)") {
 
     // general characteristics of a piano
 

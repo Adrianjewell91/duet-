@@ -52,7 +52,7 @@ class Session {
                 if (event.data.byteLength < 3) return;
                 const noteData = new Uint8Array(event.data);
 
-                this.player.playNote(noteData);
+                this.player.playNote(noteData, true);
             };
 
             return websocket;

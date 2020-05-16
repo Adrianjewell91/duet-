@@ -14,8 +14,8 @@
 */
 
 // canvas 		- HTML5 canvas element
-// RedKeyArray  - array[NOW A SET type] of keys to color red (0 = low a, 87 = high c, proceeding chromatically)
-function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)") {
+// RedKeyArray  - a Set of keys to color red (0 = low a, 87 = high c, proceeding chromatically)
+function DrawKeyboard(canvas, RedKeyArray, noteOwners = new Map()) {
 
     // general characteristics of a piano
 
@@ -37,6 +37,9 @@ function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)")
     var BLACK_KEY_WIDTH = WHITE_KEY_WIDTH * .75
     var BLACK_KEY_HEIGHT = height * .66
 
+    var remotePlayerColor = "rgb(94,94,255)";
+    var localPlayerColor = "rgb(255,0,0)";
+
     function DrawRectWithBorder(X, Y, Width, Height, Color1, Color2) {
 
         //draw border
@@ -50,7 +53,7 @@ function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)")
     }
 
     // draws a back key, based on whiteKeyIndex, where 0 <= WhiteKeyIndex < 52 
-    function drawBlackKey(whiteKeyIndex, shouldBeRed = false) {
+    function drawBlackKey(whiteKeyIndex, shouldBeRed = false, index = null) {
 
         if (!shouldBeRed) {
 
@@ -63,7 +66,7 @@ function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)")
         else {
 
             C1 = "rgb(0,0,0)";			// black
-            C2 = isDepressedKeyColor;		// red
+            C2 = noteOwners.get(index) === 1 ? remotePlayerColor : localPlayerColor;		// red
 
             DrawRectWithBorder(X_BORDER + ((whiteKeyIndex + 1) * WHITE_KEY_WIDTH) - (BLACK_KEY_WIDTH / 2), Y_BORDER, BLACK_KEY_WIDTH, BLACK_KEY_HEIGHT, C1, C2);
 
@@ -71,7 +74,7 @@ function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)")
 
     }
 
-    function DrawWhiteKey(WhiteKeyIndex, shouldBeRed = false) {
+    function DrawWhiteKey(WhiteKeyIndex, shouldBeRed = false, index = null) {
 
         if (!shouldBeRed) {
 
@@ -83,7 +86,7 @@ function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)")
         } else {
 
             C1 = "rgb(0,0,0)";			// black
-            C2 = isDepressedKeyColor;		// red
+            C2 = noteOwners.get(index) === 1 ? remotePlayerColor : localPlayerColor;		// red
 
             DrawRectWithBorder(X_BORDER + (WhiteKeyIndex * WHITE_KEY_WIDTH), Y_BORDER, WHITE_KEY_WIDTH, height, C1, C2);
 
@@ -142,13 +145,13 @@ function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)")
         if (RedKeyArray.has(index)) {
             KeyLookup = AbsoluteToKeyInfo(index);
             if (!KeyLookup.isBlack)
-                DrawWhiteKey(KeyLookup.White_Index, true);
+                DrawWhiteKey(KeyLookup.White_Index, true, index);
         }
     }
 
     // draw in lowest a# manually (making sure to draw it red if it should be)
     LowestShouldBeRed = RedKeyArray.has(1);
-    drawBlackKey(0, LowestShouldBeRed);
+    drawBlackKey(0, LowestShouldBeRed, 0);
 
     // now draw all the rest of the black keys...
     // loop through all 7 octaves	
@@ -174,7 +177,7 @@ function DrawKeyboard(canvas, RedKeyArray, isDepressedKeyColor = "rgb(255,0,0)")
         if (RedKeyArray.has(index)) {
             KeyLookup = AbsoluteToKeyInfo(index);
             if (KeyLookup.isBlack)
-                drawBlackKey(KeyLookup.White_Index, true);
+                drawBlackKey(KeyLookup.White_Index, true, index);
         }
     }
 

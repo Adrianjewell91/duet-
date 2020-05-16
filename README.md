@@ -2,17 +2,14 @@ TODO:
 
 Set up a multi instrument calibration - have the user set up a function that determines noteOn notes off logic. 
 
-Find some way to release the notes gracefully.
-    noteOn -
-    cancel scheduled values. 
-     reset current time. 
-    play if paused. 
+Red note for player and blue note for messages;
+    - I can keep track of the keys played.
+    - and I can keep track of to whom the notes belong. 
+    - start with just 1 and 2 
+    - when I add notes, add to the NoteOwner set 
+    - pass note owners to the render function and 
 
-    noteOff - just set a linear Ramp to zero but don't pause
-
-Refactor to use classes and make this thing more readable. 
-
-Create sessions:
+This weekend: Sessions:
 Host another web socket-only server on heroku and try to connect to it. 
 If it works, separate the web app from the socket server.
 host another socket only server, 

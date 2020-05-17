@@ -13,7 +13,7 @@ class Session {
                 if (access.inputs.size > 0) {
                     activity = 'playing';
                     document.querySelector('.jam-session').innerHTML = `
-                <h1 class="cover-heading">Instrument connected!</h1>
+                <h1 class="cover-heading">Instrument connected! Play your instrument to hear the music and see the keyboard light up</h1>
                 `;
 
                     access.inputs.values().next().value.onmidimessage = (e) => {
@@ -25,7 +25,7 @@ class Session {
                 } else {
                     activity = 'listening';
                     document.querySelector('.jam-session').innerHTML = `
-                <h1 class="cover-heading">No instrument connected, enjoy the music!</h1>
+                <h1 class="cover-heading">You Are listening only, enjoy the music!</h1>
             `;
                 }
 
@@ -35,7 +35,7 @@ class Session {
         } catch {
             const activity = 'listening';
             document.querySelector('.jam-session').innerHTML = `
-                <h1 class="cover-heading">No instrument connected, enjoy the music!</h1>
+                <h1 class="cover-heading">You Are listening only, enjoy the music!</h1>
             `;
 
             console.log(activity);

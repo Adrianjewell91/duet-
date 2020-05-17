@@ -40,7 +40,15 @@
             <p class="lead">Jam with your friends! Simply connect your midi keyboard to your computer, turn it ON, and
                 start the jam!</p>
             <p class="lead">
-                <a id="jam" href="#" class="btn btn-lg btn-secondary">Start the Jam!</a>
+                <label for="fname">Enter Session ID:</label><br>
+                <input class="input-group input-group-lg" type="text" id="connectionString" name="fname"><br>
+                <input id="jam" type="submit" value="Join the Jam!">
+
+
+            </p>
+            <p>OR</p>
+            <p class="lead">
+                <input id="jam" type="submit" value="Start New Session">
             </p>
         </main>
         <canvas id="canvas"></canvas>
@@ -145,15 +153,17 @@
 <script src="./scripts/Player.js"></script>
 <script src="./scripts/Jam.js"></script>
 <script>
-    document.querySelector('#jam').addEventListener('click', () => {
+    var session = document.getElementById('connectionString');
+    session.value = 'whispering-bayou-61980.herokuapp.com';
+    document.querySelector('#jam').addEventListener('click', (event) => {
+        console.log(document.getElementById('connectionString'))
         canvas = document.getElementById('canvas');
         canvas.width = document.body.clientWidth;
         canvas.height = document.body.clientHeight / 2;
         canvasW = canvas.width;
         canvasH = canvas.height;
         // const jam = new Jam(canvas, location.origin.replace(/^http/, 'ws'));
-        // const jam = new Jam(canvas, "wss://stormy-forest-80511.herokuapp.com");
-        const jam = new Jam(canvas, location.protocol.replace(/^http/, 'ws') + "//whispering-bayou-61980.herokuapp.com");
+        const jam = new Jam(canvas, location.protocol.replace(/^http/, 'ws') + '//' + session.value);
         jam.init();
     });
 </script>

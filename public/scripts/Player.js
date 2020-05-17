@@ -45,13 +45,16 @@ class Player {
             this.keyboard.currentNotes.delete(key);
             this.keyboard.noteOwners.delete(key);
             this.noteOff(this.keys[key]);
+            return this.keyboard.render();
         } else if (noteData[0] === 144) {
             this.keyboard.currentNotes.add(key);
             this.keyboard.noteOwners.set(key, isRemoteMessage ? 1 : 0);
             this.noteOn(this.keys[key], (noteData[2] / 100) * (noteData[2] / 100));
+            return this.keyboard.render();
+        } else {
+            return;
         }
 
-        return this.keyboard.render();
     }
 
 }

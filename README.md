@@ -1,13 +1,12 @@
 https://duetduet.herokuapp.com/
 
-Connect your midi keyboard, turn it on, and start the jam!
+# Connect your midi keyboard, turn it on, and start the jam!
+
+Demo video: https://www.youtube.com/watch?v=vvTyIhzYmQc&feature=youtu.be
 
 Duet lets you play duets over the internet. Structurally, the app uses a websocket server to host the session. Each piano key is one websocket connection. 
 
 Socket server Repo: https://github.com/Adrianjewell91/duet-socketserver
-
-Demo video: https://www.youtube.com/watch?v=vvTyIhzYmQc&feature=youtu.be
-
 
 Further development todo:
 

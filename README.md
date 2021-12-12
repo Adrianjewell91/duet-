@@ -1,4 +1,5 @@
 # Duet Duet: Online Piano Collaboration
+<img width="1080" alt="Screen Shot 2021-12-11 at 9 20 58 PM" src="https://user-images.githubusercontent.com/28193592/145697950-3dbc448b-3079-47b2-aef9-b701de02cdd1.png">
 
 https://duetduet.herokuapp.com/
 Connect your midi keyboard, turn it on, and start the jam!
@@ -45,3 +46,4 @@ Scaling is a major opportunity in this project. One way is for for participators
 Another opportunity is in the number of sessions. There should really be unlimited number of sessions. Containerization will help with this, enabling Dynamic configs and the rest is pretty much from there.
 
 Another opportunity is the syncing of the notes. Right now, the data is udp style but still over tcp, so the notes from other players just sound whenever they arrive. It would be great to sync the notes to a time frame of some sort, but the trade off is potentialy delay. The other option is to really streamline the packets. In fact, some improvements along this line has already made a big difference. One thing I did was compress the packets, and also create a single socket for each piano key.  
+

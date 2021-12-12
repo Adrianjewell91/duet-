@@ -25,6 +25,8 @@ Simply connect the piano and let the app do the work. Currently only Casio P3100
 
 The online piano is a collecton of samples that I made myself from Garageband. Originally I used web audio api, but then chose sampling. you can see the progression in the git history. 
 
+Special thx to Benjamin Pritchard / Kundalini Software for some piano rendering code.  
+
 ## 2. <a name="grid"></a>Web Socket Backend
 
 Structurally, the app uses a websocket server to host the session. Each piano key is one websocket connection. 

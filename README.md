@@ -27,6 +27,8 @@ The online piano is a collecton of samples that I made myself from Garageband. O
 
 Special thx to Benjamin Pritchard / Kundalini Software for some piano rendering code.  
 
+See the objects logic here https://github.com/Adrianjewell91/duet-/tree/master/public/scripts
+
 ## 2. <a name="grid"></a>Web Socket Backend
 
 Structurally, the app uses a websocket server to host the session. Each piano key is one websocket connection. 
